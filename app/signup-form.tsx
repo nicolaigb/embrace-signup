@@ -38,6 +38,7 @@ export function SignupForm() {
     resolver: zodResolver(schema),
     mode: "onTouched",
     defaultValues: {
+      name: "",
       email: "",
     },
   });
@@ -47,8 +48,8 @@ export function SignupForm() {
   };
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-      <Card>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-sm">
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>Embrace Sound</CardTitle>
           <CardDescription>
@@ -65,7 +66,6 @@ export function SignupForm() {
                   <FieldLabel htmlFor="name">Name</FieldLabel>
                   <Input
                     id="name"
-                    placeholder="Name"
                     required
                     aria-invalid={fieldState.invalid}
                     {...field}
@@ -82,7 +82,6 @@ export function SignupForm() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="Email"
                     required
                     aria-invalid={fieldState.invalid}
                     aria-describedby={
