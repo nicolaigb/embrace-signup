@@ -2,21 +2,9 @@
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, Form, useForm } from "react-hook-form";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Controller, useForm } from "react-hook-form";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { toast } from "sonner";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import { ArrowBigUpIcon, CornerDownLeftIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import createSignup from "@/actions/signup/createSignup";
 
 const schema = z.object({
   name: z.string(),
@@ -43,7 +32,8 @@ export function SignupForm() {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof schema>) => {
+  const onSubmit = async (data: z.infer<typeof schema>) => {
+    await createSignup(data);
     toast("Keep it locked.", { position: "bottom-center" });
   };
 

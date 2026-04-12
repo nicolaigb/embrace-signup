@@ -1,4 +1,3 @@
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { SignupForm } from "./signup-form";
 
 export default function Home() {
